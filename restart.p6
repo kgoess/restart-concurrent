@@ -9,7 +9,7 @@ show_results([$promise1, $promise2, $promise3]);
 
 
 sub sometask1() {
-     return run_task('/bin/sleep 2 && /bin/echo', ['task1 ok']);
+     return run_task('/bin/echo', ['task1 ok']);
 }
 sub sometask2() {
      return run_task('/bin/sleep', [2]);
