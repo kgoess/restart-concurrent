@@ -29,8 +29,8 @@ sub run_task($prog, @args){
         my %result;
 
         # subscribe to new output from out and err handles:
-        $proc.stdout.tap(-> $v { %result{"stdout"} = $v } );
-        $proc.stderr.tap(-> $v { %result{"stderr"} = $v } );
+        $proc.stdout(:bin).act: { %result{stdout} = shift };
+        #$proc.stderr.tap(-> $v { %result{"stderr"} = $v } );
 
         my $proc_promise = $proc.start;
 
