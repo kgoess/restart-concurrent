@@ -52,3 +52,26 @@ sub show_results(@promises) {
     say "p2 %p2_result.perl()";
     say "p3 %p3_result.perl()";
 }
+
+__END__
+
+    This throws different exceptions, sometimes hangs
+    
+    It is based on the code at http://doc.perl6.org/type/Proc%3A%3AAsync
+    
+    $ ./restart.pl
+    in show_results
+    Unhandled exception in code scheduled on thread 4530032640
+    ===SORRY!===
+    P6opaque: no such attribute '$!tappers_lock'
+    
+    $ ./restart.pl
+    in show_results
+    ===SORRY!===
+    P6opaque: no such attribute '$!tappers_lock'
+    
+    $ ./restart.pl
+    in show_results
+    ^C
+
+
