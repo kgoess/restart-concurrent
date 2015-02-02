@@ -53,7 +53,7 @@ sub show_results(@promises) {
     say "p3 %p3_result.perl()";
 }
 
-__END__
+=begin pod
 
     This throws different exceptions, sometimes hangs
     
@@ -75,3 +75,4 @@ __END__
     ^C
 
 
+=end pod
