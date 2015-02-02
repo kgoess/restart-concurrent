@@ -9,7 +9,7 @@ show_results([$promise1, $promise2, $promise3]);
 
 
 sub sometask1() {
-     return run_task('/bin/echo', ['task1 ok']);
+     return run_task('/bin/sleep 2 && /bin/echo', ['task1 ok']);
 }
 sub sometask2() {
      return run_task('/bin/sleep', [2]);
@@ -19,8 +19,6 @@ sub sometask3() {
 }
 
 sub run_task($prog, @args){
-    #my $p = Promise.new;
-    #my $v = $p.vow;
 
     my $p = Promise.start({
 
@@ -29,8 +27,8 @@ sub run_task($prog, @args){
         my %result;
 
         # subscribe to new output from out and err handles:
-        $proc.stdout(:bin).act: { %result{stdout} = shift };
-        #$proc.stderr.tap(-> $v { %result{"stderr"} = $v } );
+        $proc.stdout.tap(-> $v { %result{"stdout"} = $v });
+        $proc.stderr.tap(-> $v { %result{"stderr"} = $v });
 
         my $proc_promise = $proc.start;
 
@@ -42,7 +40,6 @@ sub run_task($prog, @args){
     });
 
     return $p;
-
 }
 
 sub show_results(@promises) {
@@ -54,5 +51,4 @@ sub show_results(@promises) {
     say "p1 %p1_result.perl()";
     say "p2 %p2_result.perl()";
     say "p3 %p3_result.perl()";
-    #say %p1_result{"stdout"};
 }
