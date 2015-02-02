@@ -74,5 +74,8 @@ sub show_results(@promises) {
     in show_results
     ^C
 
+    $ perl6 --version
+    This is perl6 version 2014.12 built on MoarVM version 2014.12
+
 
 =end pod
