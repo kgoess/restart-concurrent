@@ -36,7 +36,7 @@ sub run_task($prog, @args){
         await $proc_promise;
 
         #$v.keep( %result );
-        return %result;
+        %result;
     });
 
     return $p;
