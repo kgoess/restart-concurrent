@@ -55,27 +55,14 @@ sub show_results(@promises) {
 
 =begin pod
 
-    This throws different exceptions, sometimes hangs
-    
-    It is based on the code at http://doc.perl6.org/type/Proc%3A%3AAsync
-    
-    $ ./restart.pl
-    in show_results
-    Unhandled exception in code scheduled on thread 4530032640
-    ===SORRY!===
-    P6opaque: no such attribute '$!tappers_lock'
-    
-    $ ./restart.pl
-    in show_results
-    ===SORRY!===
-    P6opaque: no such attribute '$!tappers_lock'
-    
-    $ ./restart.pl
-    in show_results
-    ^C
+    This is working with the recent fixes in moarvm and rakudo as of June 8.
+
+    p1 {:stdout("task1 ok\n")}<>
+    p2 {}<>
+    p3 {:stderr(": No such file or directory\n")}<>
 
     $ perl6 --version
-    This is perl6 version 2014.12 built on MoarVM version 2014.12
+    This is perl6 version 2015.05-139-g2281689 built on MoarVM version 2015.05-49-g07fbd62
 
 
 =end pod
